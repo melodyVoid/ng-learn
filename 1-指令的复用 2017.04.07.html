@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>1-指令的复用 2017.04.07</title>
+    <script src="bower/angular/angular.min.js"></script>
 </head>
-<body>
-
+<body data-ng-app="myApp">
+<div ng-controller="myCtrl">
+    <bt-demo howToLoad="loadData()">滑动加载</bt-demo>
+</div>
+<div ng-controller="myCtrl2">
+    <bt-demo howToLoad="loadData2()">滑动加载</bt-demo>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl",["$scope", function ($scope) {
+        $scope.loadData = function () {
+            console.log("加载数据中...")
+        }
+    }]);
+    app.controller("myCtrl2",["$scope", function ($scope) {
+        $scope.loadData2 = function () {
+            console.log("第二个加载数据中...")
+        }
+    }]);
+    app.directive("btDemo", function () {
+        return {
+            restrict:"EA",
+            link: function (scope,elem,attr) {
+                elem.on("mouseenter", function () {
+                    scope.$apply(attr.howtoload);//这里注意"howtoload"全是小写
+                });
+            }
+        }
+    })
+</script>
 </body>
 </html>
