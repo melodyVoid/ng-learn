@@ -1,0 +1,13 @@
+.title{
+    width: 200px;
+    text-align: center;
+    background-color: #ccc;
+    color: #fff;
+    border: 1px solid #666;
+}
+.body{
+    width: 200px;
+    text-align: center;
+    border: 1px solid #666;
+    margin-top: -1px;
+}

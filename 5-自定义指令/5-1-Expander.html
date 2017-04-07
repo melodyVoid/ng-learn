@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expander</title>
+    <link rel="stylesheet" href="Expander.css">
+    <script src="../bower/angular/angular.min.js"></script>
+</head>
+<body data-ng-app="myApp">
+<div ng-controller="expanderController">
+    <expander class="expander" expander-title="title">
+        {{text}}
+    </expander>
+</div>
+<script src="Expander.js"></script>
+</body>
+</html>
