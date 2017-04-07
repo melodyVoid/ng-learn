@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-2-Form2</title>
+    <link rel="stylesheet" href="../bower/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../bower/angular/angular.min.js"></script>
+</head>
+<body style="padding: 50px;" data-ng-app="myApp">
+<div class="container" ng-controller="Controller" >
+    <form name="form" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Name:</label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="userName" ng-model="user.name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">E-mail:</label>
+            <div class="col-md-6">
+                <input type="email" class="form-control" name="userEmail" ng-model="user.email" required>
+            </div>
+            <div class="col-md-4" ng-show="form.userEmail.$dirty && form.userEmail.$invalid">
+                <span class="help-block" ng-show="form.userEmail.$error.required">请输入你的邮箱</span>
+                <span class="help-block" ng-show="form.userEmail.$error.email">请输入正确的邮箱地址</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Gender</label>
+            <div class="col-md-10">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="male" ng-model="user.gender"> male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" ng-model="user.gender"> female
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="userAgree" ng-model="user.agree" required>I agree
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <span class="help-block">
+                    Please agree and sign
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-default" ng-click="reset()" ng-disabled="isUnchanged(user)">Reset</button>
+                <button class="btn btn-default" ng-click="update(user)" ng-disabled="form.$invalid || isUnchanged(user)">Save</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script src="FormAdv.js"></script>
+</body>
+</html>

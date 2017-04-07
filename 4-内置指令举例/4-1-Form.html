@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-Form</title>
+    <script src="../bower/angular/angular.min.js"></script>
+</head>
+<body data-ng-app="myApp">
+<form name="myForm" ng-submit="save()" ng-controller="TestForm">
+    <input type="text" name="userName" ng-model="user.userName" required>
+    <input type="password" name="password" ng-model="user.password" required>
+    <input type="submit" value="提交" ng-disabled="myForm.$invalid">
+</form>
+<script src="FormBasic.js"></script>
+</body>
+</html>
