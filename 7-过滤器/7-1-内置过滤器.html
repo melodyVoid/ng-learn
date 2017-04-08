@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置过滤器</title>
+    <script src="../bower/angular/angular.min.js"></script>
+</head>
+<body data-ng-app="myApp">
+<div ng-controller="filterCtrl">
+    <h2>原始数据: {{price}}</h2>
+    <h3>currency: {{price|currency}}</h3>
+    <h3>更改货币符号(currency:"￥"): {{price|currency:"￥"}}</h3>
+    <h3>保留一位小数(currency:"￥":1): {{price|currency:"￥":1}}</h3>
+    <h3>数字格式(number): {{price|number}}</h3>
+    <h3>数字格式保留一位小数(number:1): {{price|number:1}}</h3>
+
+    <hr>
+
+    <h2>原始数据: 时间戳{{time}}</h2>
+    <h3>格式化时间date: {{time|date}}</h3>
+    <h3>格式化时间date: {{time|date:"yyyy年MM月dd日 HH:mm:ss"}}</h3>
+
+    <hr>
+
+    <h2>原始数据: {{message}}</h2>
+    <h3>limitTo {{message|limitTo}}</h3>
+    <h3>limitTo:3 {{message|limitTo:3}}  截取前三个字</h3>
+    <h3>limitTo:3:1 {{message|limitTo:3:1}} 3表示how many,1表示index</h3>
+
+    <hr>
+    <h2>原始数据: {{name}}</h2>
+    <h3>lowercase: {{name|lowercase}}</h3>
+    <h3>uppercase: {{name|uppercase}}</h3>
+
+    <hr>
+    <h2>原始数据: {{data}}</h2>
+    <p>json数据: {{data|json}}</p>
+
+    <hr>
+    <ul>
+        <li ng-repeat="v in data|orderBy:'name'">{{v.name}}</li>
+    </ul>
+    <h4>默认(orderBy:"name"): {{data|orderBy:"name"}}</h4>
+    <h4>降序(orderBy:"name":true) {{data|orderBy:"name":true}}</h4>
+    <h4>升序(orderBy:"name":false) {{data|orderBy:"name":false}}</h4>
+
+
+    <hr>
+
+    <h2>filter</h2>
+    <h4>数据里包含2的可以被匹配(filter:2)  {{data|filter:2}}</h4>
+    <h4>包含male的可以被匹配(filter:"male") {{data|filter:"male"}}</h4>
+    <h4>绝对匹配(filter:"male":true) {{data|filter:"male":true}}</h4>
+</div>
+<script src="filter.js"></script>
+</body>
+</html>

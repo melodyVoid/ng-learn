@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义filter</title>
+    <link rel="stylesheet" href="../bower/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../bower/angular/angular.min.js"></script>
+</head>
+<body data-ng-app="myApp">
+<div class="container" ng-controller="filterController">
+    <h1>参数是数字,参数是多少,就有多少个笑脸,若没有参数,默认是一个笑脸</h1>
+    <h2>默认: {{"Botao"|myFilter}}</h2>
+    <h2>参数为4:{{"Botao"|myFilter:4}}</h2>
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>电话</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="v in data">
+            <td>{{v.id}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.tel|truncate:8}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="myFilter.js"></script>
+</body>
+</html>
