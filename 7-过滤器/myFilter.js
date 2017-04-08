@@ -6,7 +6,7 @@ app.filter("myFilter", function () {
     }
 });
 app.filter("truncate", function () {
-    return function (telNum,length) {
+    return function (telNum,length) {    //<td>{{v.tel|truncate:8}}</td>
         length = length?length:4;
         return telNum.substr(0,11-length)+"*".repeat(length);
     }
