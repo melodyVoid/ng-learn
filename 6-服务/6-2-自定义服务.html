@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6-2-自定义服务</title>
+    <script src="../bower/angular/angular.min.js"></script>
+</head>
+<body data-ng-app="myApp">
+<div ng-controller="ServiceController">
+    <label>用户名:</label>
+    <input type="text" ng-model="username" placeholder="请输入用户名">
+    <ul ng-show="username">
+        <li ng-repeat="user in users">{{user.name}}</li>
+    </ul>
+</div>
+<script src="myService.js"></script>
+</body>
+</html>

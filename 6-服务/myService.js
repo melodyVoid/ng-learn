@@ -1,0 +1,32 @@
+var app = angular.module("myApp", []);
+app.factory("userListService",["$http", function ($http) {
+    var doRequest = function (username,path) {
+        return $http({
+            method: "GET",
+            url:"data.json"
+        });
+    };
+    return {
+        userList: function (username) {
+            return doRequest(username,"userList");
+        }
+    }
+}]);
+
+app.controller("ServiceController", ["$scope", "$timeout", "userListService",
+    function ($scope, $timeout, userListService) {
+        var timeout;
+        $scope.$watch("username", function (newUserName) {
+            if(newUserName){
+                if(timeout){
+                    $timeout.cancel(timeout);
+                }
+                timeout = $timeout(function () {
+                    userListService.userList(newUserName).
+                    then(function (response) {
+                        $scope.users = response.data;
+                    })
+                },350);
+            }
+        })
+    }]);
